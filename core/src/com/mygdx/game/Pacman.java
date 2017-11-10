@@ -13,6 +13,7 @@ public class Pacman{
 		public static final int DIRECTION_DOWN = 3;
 		public static final int DIRECTION_LEFT = 4;
 		public static final int DIRECTION_STILL = 0;
+		public static final int SPEED = 10;
 		public Pacman(int x, int y) {
 			position = new Vector2(x,y);
 		}
@@ -24,16 +25,16 @@ public class Pacman{
 		public void move(int dir) {
 			switch(dir) {
 			case DIRECTION_UP:
-				position.y += 10;
+				position.y += SPEED;
 				break;
 			case DIRECTION_DOWN:
-				position.y -= 10;
+				position.y -= SPEED;
 				break;
 			case DIRECTION_LEFT:
-				position.x -= 10;
+				position.x -= SPEED;
 				break;
 			case DIRECTION_RIGHT:
-				position.x += 10;
+				position.x += SPEED;
 			}
 			
 		}

@@ -7,15 +7,18 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 public class GameScreen extends ScreenAdapter{
+	
 
+	World world;
+	Pacman pacman;
 	private PacmanGame pacmanGame;
-	private Pacman pacman;
 	private Texture pacmanImg;
 	 
     public GameScreen(PacmanGame pacmanGame) {
         this.pacmanGame = pacmanGame;
         pacmanImg = new Texture("pacman.png");
-        pacman = new Pacman(100,100);
+        world = new World(pacmanGame);
+        pacman = this.world.getPacman();
     }
     
     @Override
