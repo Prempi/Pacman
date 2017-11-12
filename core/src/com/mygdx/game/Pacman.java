@@ -36,9 +36,9 @@ public class Pacman{
 			return position;
 		}
 		
-		 public void setNextDirection(int dir) {
+		public void setNextDirection(int dir) {
 		        nextDirection = dir;
-		    }
+		}
 		
 		public void move(int dir) {
 			switch(dir) {
@@ -72,6 +72,9 @@ public class Pacman{
 				 else {
 					 currentDirection = DIRECTION_STILL;
 				 }
+				 if(maze.hasDotAt(getRow(),getColumn())) {
+					 maze.removeDotAt(getRow(),getColumn());
+				 }
 			 }
 			 position.x += SPEED * DIR_OFFSETS[currentDirection][0];
 		     position.y += SPEED * DIR_OFFSETS[currentDirection][1];
@@ -80,11 +83,21 @@ public class Pacman{
 		private boolean canMoveInDirection(int dir) {
 			int newRow = getRow()+DIR_OFFSETS[dir][1];
 			int newColumn = getColumn()+DIR_OFFSETS[dir][0];
-			System.out.println(newRow+","+newColumn);
 			if(maze.hasWallAt(newRow, newColumn)) {
 				return false;
 			}
 			return true;
+		}
+		
+		private boolean eat(int dir) {
+			int newRow = getRow();
+			int newColumn = getColumn();
+			if(maze.hasDotAt(newRow, newColumn)) {
+				return true;
+			}
+			else{
+				return false;
+			}
 		}
 		
 	    private int getRow() {
